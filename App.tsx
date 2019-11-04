@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
@@ -17,11 +17,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-*/
 
-
-import { createAppContainer, createStackNavigator } from "react-navigation";
-// import Reactotron from './ReactotronConfig';
-import routeConfig from "./src/routeConfig";
-
-export default createAppContainer(createStackNavigator(routeConfig));
