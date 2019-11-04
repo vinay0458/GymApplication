@@ -1,20 +1,51 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  NativeModules,
+} from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator} from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+import Welcome from './src/Screens/Welcome/Welcome';
+import Login from './src/Screens/LoginScreen/Login';
+import Signup from './src/Screens/SignupScreen/Signup';
+// Define UIManager const
+const { UIManager } = NativeModules;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+// Enable Animation Experimental
+UIManager.setLayoutAnimationEnabledExperimental &&
+UIManager.setLayoutAnimationEnabledExperimental(true);
+
+const App = createStackNavigator({
+  HomeScreen: {
+    screen: Welcome,
+    navigationOptions: {
+      title: 'Welcome',
+      headerStyle: { backgroundColor: '#fff' },
+      headerTintColor: '#ffffff',
+    },
   },
+  Login: {screen: Login},
+  Signup: {screen: Signup},
+
 });
 
+const WelcomeStack = createStackNavigator(
+  {
+    //Defination of Navigaton from home screen
+    Welcome: { screen: Welcome },
+  },
+  {
+    //For React Navigation 2.+ change defaultNavigationOptions->navigationOptions
+    navigationOptions: {
+      //Header customization of the perticular Screen
+      headerStyle: {
+        backgroundColor: '#42f44b',
+      },
+      headerTintColor: '#FFFFFF',
+      title: 'Home',
+      //Header title
+    },
+  }
+);
+
+export default createAppContainer(App);
