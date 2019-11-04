@@ -30,7 +30,8 @@ export default class Welcome extends Component<props> {
     console.log("fonts loaded");
   }
   navigation(){
-    console.log("this navigation",this);
+    console.log("this navigation");
+    this.props.navigation.navigate("Signup");
     this.setState({ loading: true });
   }
   render(){
@@ -53,7 +54,7 @@ export default class Welcome extends Component<props> {
           </Content>
           <Footer>
             <Left>
-              <Button primary onPress={()=> this.props.navigation.navigate("Signup")}>
+              <Button primary onPress={this.navigation}>
                 <Text >Sign Up!</Text>
               </Button>
             </Left>

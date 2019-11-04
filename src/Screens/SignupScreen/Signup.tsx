@@ -16,6 +16,9 @@ export default class Welcome extends Component<any> {
     })
     this.setState({ loading: false })
   }
+  navigation(){
+      console.log("check if signup is success");
+  }
   render(){
     if (this.state.loading) {
       return (
@@ -54,7 +57,7 @@ export default class Welcome extends Component<any> {
             </Form>
         </Content>
           <Footer>
-            <Button primary>
+            <Button primary onPress={this.navigation}>
                 <Text>Signup</Text>
               </Button>
           </Footer>
